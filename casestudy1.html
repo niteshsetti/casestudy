@@ -56,7 +56,7 @@
         </div>
         </div>
         <script>
-            document.getElementById("register").style.visibility="hidden";
+            document.getElementById("register").disabled = true;
             var y,z,a,b,c,d,e,f;
             var vali_name="",vali_email="",vali_mobile="",radios="",checkboxes="",address="",desi="",multis="";
             var save_checkbox=[],save_radio=[],st_desi=[],selected = [];
@@ -68,23 +68,21 @@
                      document.getElementById("msg").innerHTML="<img src='valid.jpg' style='width:20px;'>";
                      document.getElementById('name').style.backgroundColor="green";
                      document.getElementById('name').style.color="white";
-                     document.getElementById("register").style.visibility="visible"
                      document.getElementById("e1").innerHTML="";
+                     vali();
 
                  }
                  else if(vali_name==""){
                      document.getElementById("msg").innerHTML="";  
                      document.getElementById('name').style.backgroundColor="white";
                      document.getElementById("e1").innerHTML="";
-                     document.getElementById("register").style.visibility="hidden"
 
                  }
                  else{
                      document.getElementById("msg").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
                      document.getElementById('name').style.backgroundColor="red";
                      document.getElementById('name').style.color="white";
-                     document.getElementById("register").style.visibility="hidden"
-                     document.getElementById("e1").innerHTML="Min 5 and Max 10 chars";
+                     document.getElementById("e1").innerHTML="Username must contain 5-10 Characters";
 
 
                  }
@@ -97,22 +95,20 @@
                      document.getElementById("msg1").innerHTML="<img src='valid.jpg' style='width:20px;'>";
                      document.getElementById('email').style.backgroundColor="green";
                      document.getElementById('email').style.color="white";
-                     document.getElementById("register").style.visibility="visible"
                      document.getElementById("e2").innerHTML="";
+                     vali();
                  }
                  else if(vali_email==""){
                      document.getElementById("msg1").innerHTML="";  
                      document.getElementById('email').style.backgroundColor="white";
                      document.getElementById("e2").innerHTML="";
-                     document.getElementById("register").style.visibility="hidden"
 
                  }
                  else{
                      document.getElementById("msg1").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
                      document.getElementById('email').style.backgroundColor="red";
                      document.getElementById('email').style.color="white";
-                     document.getElementById("register").style.visibility="hidden"
-                     document.getElementById("e2").innerHTML="Email must contains @ and .";
+                     document.getElementById("e2").innerHTML="Invalid Email ID";
 
 
                  }
@@ -125,21 +121,19 @@
                      document.getElementById("msg2").innerHTML="<img src='valid.jpg' style='width:20px;'>";
                      document.getElementById('mobile').style.backgroundColor="green";
                      document.getElementById('mobile').style.color="white";
-                     document.getElementById("register").style.visibility="visible"
                      document.getElementById("e3").innerHTML="";
+                     vali();
                  }
                  else if(vali_mobile==""){
                      document.getElementById("msg2").innerHTML="";  
                      document.getElementById('mobile').style.backgroundColor="white";
                      document.getElementById("e3").innerHTML="";
-                     document.getElementById("register").style.visibility="hidden"
 
                  }
                  else{
                      document.getElementById("msg2").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
                      document.getElementById('mobile').style.backgroundColor="red";
                      document.getElementById('mobile').style.color="white";
-                     document.getElementById("register").style.visibility="hidden"
                      document.getElementById("e3").innerHTML="Invalid mobile number";
 
 
@@ -155,14 +149,13 @@
                  }
                  if(save_radio.length>0){
                      b=true;
+                     vali();
                  }
                  if(b==true){
                      document.getElementById("msg3").innerHTML="<img src='valid.jpg' style='width:20px;'>";
-                     document.getElementById("register").style.visibility="visible"
                  }
                  else{
                     document.getElementById("msg3").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="hidden"
                  }
             }
             function cb(){
@@ -175,13 +168,12 @@
                 if(save_checkbox.length>=2){
                     c=true;
                     document.getElementById("msg4").innerHTML="<img src='valid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="visible"
                     document.getElementById("e4").innerHTML="";
+                    vali();
                 }
                 if(save_checkbox.length<2){
                     c=false;
                     document.getElementById("msg4").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="hidden"
                     document.getElementById("e4").innerHTML="Min 2 Languages Required";
                 }
             }
@@ -191,13 +183,12 @@
                 d=pattern.test(address);
                 if(d==true){
                     document.getElementById("msg5").innerHTML="<img src='valid.jpg' style='width:20px;'>"
-                    document.getElementById("register").style.visibility="visible"
                     document.getElementById("e5").innerHTML=""
+                    vali();
                 }
                 else{
                     document.getElementById("msg5").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="hidden"
-                    document.getElementById("e5").innerHTML="Min 50 chars and max 150 chars";
+                    document.getElementById("e5").innerHTML="Address must contain 50-150 Characters";
                 }
                 if(address==""){
                     document.getElementById("msg5").innerHTML="";
@@ -212,11 +203,10 @@
                 if(st_desi.length>0){
                     e=true;
                     document.getElementById("msg6").innerHTML="<img src='valid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="visible"
+                    vali();
                 }
                 else{
                     document.getElementById("msg6").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="hidden"
                 }
 
             }
@@ -235,24 +225,20 @@
                 }
                 if(f==true){
                     document.getElementById("msg7").innerHTML="<img src='valid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="visible"
                     document.getElementById("e6").innerHTML="";
+                    vali();
                 }
                 else{
                     document.getElementById("msg7").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
-                    document.getElementById("register").style.visibility="hidden"
                     document.getElementById("e6").innerHTML="Min 2 Skills Required";
                 }
             }
-            document.getElementById("register").onclick=function (){
-              if(vali_name=="" || vali_email=="" || vali_mobile=="" || save_radio.length==0 || save_checkbox.length==0 || address=="" || st_desi
-              .length==0 || selected.length==0){
-                alert("complete All Fields First");
-              }
-              else{
-                  alert("Validation-Success");
-              }
+            function vali(){
+            if(vali_name!="" && vali_email!="" && vali_mobile!="" && save_radio.length!=0 && save_checkbox.length!=0 && address!="" && st_desi
+              .length!=0 && selected.length!=0){
+                document.getElementById("register").disabled =false; 
             }
+          }
         </script>
     </body>
 </html>
