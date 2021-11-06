@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Case-Study</title>
+        <link rel="stylesheet" href="/case.css">
+    </head>
+    <body>
+            <div id="sty">
+              <div id="p">
+                <h2 id="tit">Employee-Form</h2>
+                <input type="text" placeholder="Enter Your Name" class="input" onkeyup="validate_name()" id="name"><span id="msg"></span></br>
+                <p id="e1"></p>
+                <input type="email" placeholder="Enter Your Email" class="input" onkeyup="validate_email()" id="email"><span id="msg1"></span></br>
+                <p id="e2"></p>
+                <input type="text" placeholder="Enter Your Mobile" class="input" onkeyup="validate_mobile()" id="mobile"><span id="msg2"></span></br>
+                <p id="e3"></p>
+                <label>Gender:</label>
+                <input type="radio" value="Male" id="male" class="hello" name="hello" onchange="radio()">
+                <label for="male">Male</label>
+                <input type="radio" value="Female" id="female" class="hello" name="hello" onchange="radio()">
+                <label for="female">Female</label><span id="msg3"></span><br>
+                <br>
+               <label>Languages:</label>
+                <input type="checkbox" id="c1" name="c1" value="Telugu" onchange="cb()">
+                <label for="c1">Telugu</label>
+                <input type="checkbox" id="c2" name="c1" value="Hindi"  onchange="cb()">
+                <label for="c2">Hindi</label>
+                <input type="checkbox" id="c3" name="c1" value="English"  onchange="cb()">
+                <label for="c3">English</label><span id="msg4"></span><br>
+                <p id="e4"></p>
+                <label>Address:</label>
+                </br></br>
+                <textarea placeholder="Enter Your Address" id="textcheck" onkeyup="validate_address()"></textarea><span id="msg5"></span>
+                <p id="e5"></p>
+              <label>Designation:</label>
+               </br></br>
+                <select id="des" onchange="se_desi()">
+                    <option selected hidden value="=">Select Designation</option>
+                    <option value="Employee">Employee</option>
+                    <option value="HR">HR</option>
+                    <option value="CTO">CTO</option>
+                </select><span id="msg6"></span>
+                <br>
+                <br>
+                <label>Skills:</label>
+               </br></br>
+                <select id="get"  onchange="multi()" multiple >
+                    <option value="C">C</option>
+                    <option value="c++">C++</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                </select><span id="msg7"></span>
+            </br>
+            <p id="e6"></p>
+            <input type="submit" value="Register" id="register">
+        </div>
+        </div>
+        <script>
+            document.getElementById("register").style.visibility="hidden";
+            var y,z,a,b,c,d,e,f;
+            var vali_name="",vali_email="",vali_mobile="",radios="",checkboxes="",address="",desi="",multis="";
+            var save_checkbox=[],save_radio=[],st_desi=[],selected = [];
+            function validate_name(){
+                vali_name=document.getElementById("name").value;
+                var pattern=/^[a-zA-Z\s]{5,10}$/g;
+                 y=pattern.test(vali_name);
+                 if(y==true){
+                     document.getElementById("msg").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                     document.getElementById('name').style.backgroundColor="green";
+                     document.getElementById('name').style.color="white";
+                     document.getElementById("register").style.visibility="visible"
+                     document.getElementById("e1").innerHTML="";
+
+                 }
+                 else if(vali_name==""){
+                     document.getElementById("msg").innerHTML="";  
+                     document.getElementById('name').style.backgroundColor="white";
+                     document.getElementById("e1").innerHTML="";
+                     document.getElementById("register").style.visibility="hidden"
+
+                 }
+                 else{
+                     document.getElementById("msg").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                     document.getElementById('name').style.backgroundColor="red";
+                     document.getElementById('name').style.color="white";
+                     document.getElementById("register").style.visibility="hidden"
+                     document.getElementById("e1").innerHTML="Min 5 and Max 10 chars";
+
+
+                 }
+            }
+            function validate_email(){
+                vali_email=document.getElementById("email").value;
+                var pattern=/^\w+[a-zA-Z0-9\.-]+@([a-z])+(\.[a-z]{2,3})+$/g
+                 z=pattern.test(vali_email);
+                 if(z==true){
+                     document.getElementById("msg1").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                     document.getElementById('email').style.backgroundColor="green";
+                     document.getElementById('email').style.color="white";
+                     document.getElementById("register").style.visibility="visible"
+                     document.getElementById("e2").innerHTML="";
+                 }
+                 else if(vali_email==""){
+                     document.getElementById("msg1").innerHTML="";  
+                     document.getElementById('email').style.backgroundColor="white";
+                     document.getElementById("e2").innerHTML="";
+                     document.getElementById("register").style.visibility="hidden"
+
+                 }
+                 else{
+                     document.getElementById("msg1").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                     document.getElementById('email').style.backgroundColor="red";
+                     document.getElementById('email').style.color="white";
+                     document.getElementById("register").style.visibility="hidden"
+                     document.getElementById("e2").innerHTML="Email must contains @ and .";
+
+
+                 }
+            }
+            function validate_mobile(){
+                vali_mobile=document.getElementById("mobile").value;
+                var pattern=/^\d{10}$/g
+                 a=pattern.test(vali_mobile);
+                 if(a==true){
+                     document.getElementById("msg2").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                     document.getElementById('mobile').style.backgroundColor="green";
+                     document.getElementById('mobile').style.color="white";
+                     document.getElementById("register").style.visibility="visible"
+                     document.getElementById("e3").innerHTML="";
+                 }
+                 else if(vali_mobile==""){
+                     document.getElementById("msg2").innerHTML="";  
+                     document.getElementById('mobile').style.backgroundColor="white";
+                     document.getElementById("e3").innerHTML="";
+                     document.getElementById("register").style.visibility="hidden"
+
+                 }
+                 else{
+                     document.getElementById("msg2").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                     document.getElementById('mobile').style.backgroundColor="red";
+                     document.getElementById('mobile').style.color="white";
+                     document.getElementById("register").style.visibility="hidden"
+                     document.getElementById("e3").innerHTML="Invalid mobile number";
+
+
+
+                 }
+            }
+            function radio(){
+                radios=document.getElementsByName("hello")
+                 for(let i=0;i<radios.length;i++){
+                     if(radios[i].checked){
+                         save_radio.push(radios[i].value);
+                     }
+                 }
+                 if(save_radio.length>0){
+                     b=true;
+                 }
+                 if(b==true){
+                     document.getElementById("msg3").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                     document.getElementById("register").style.visibility="visible"
+                 }
+                 else{
+                    document.getElementById("msg3").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="hidden"
+                 }
+            }
+            function cb(){
+                checkboxes=document.getElementsByName("c1");
+                for(let i=0;i<checkboxes.length;i++){
+                    if(checkboxes[i].checked){
+                        save_checkbox.push(checkboxes[i].value);
+                    }
+                }
+                if(save_checkbox.length>=2){
+                    c=true;
+                    document.getElementById("msg4").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="visible"
+                    document.getElementById("e4").innerHTML="";
+                }
+                if(save_checkbox.length<2){
+                    c=false;
+                    document.getElementById("msg4").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="hidden"
+                    document.getElementById("e4").innerHTML="Min 2 Languages Required";
+                }
+            }
+            function validate_address(){
+                address=document.getElementById("textcheck").value;
+                var pattern=/^[a-zA-Z0-9\s\W]{50,150}$/g
+                d=pattern.test(address);
+                if(d==true){
+                    document.getElementById("msg5").innerHTML="<img src='valid.jpg' style='width:20px;'>"
+                    document.getElementById("register").style.visibility="visible"
+                    document.getElementById("e5").innerHTML=""
+                }
+                else{
+                    document.getElementById("msg5").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="hidden"
+                    document.getElementById("e5").innerHTML="Min 50 chars and max 150 chars";
+                }
+                if(address==""){
+                    document.getElementById("msg5").innerHTML="";
+                    document.getElementById("e5").innerHTML=""
+                }
+
+
+            }
+            function se_desi(){
+                var desi=document.getElementById("des").value;
+                st_desi.push(desi);
+                if(st_desi.length>0){
+                    e=true;
+                    document.getElementById("msg6").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="visible"
+                }
+                else{
+                    document.getElementById("msg6").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="hidden"
+                }
+
+            }
+            function multi(){
+                  var multis=document.getElementById('get').options
+                  for(let i=0;i<multis.length;i++){
+                    if(multis[i].selected){
+                     selected.push(multis[i].value);
+                    }
+                }
+                if(selected.length>=2){
+                   f=true;
+                }
+                else{
+                    f=false;
+                }
+                if(f==true){
+                    document.getElementById("msg7").innerHTML="<img src='valid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="visible"
+                    document.getElementById("e6").innerHTML="";
+                }
+                else{
+                    document.getElementById("msg7").innerHTML="<img src='invalid.jpg' style='width:20px;'>";
+                    document.getElementById("register").style.visibility="hidden"
+                    document.getElementById("e6").innerHTML="Min 2 Skills Required";
+                }
+            }
+            document.getElementById("register").onclick=function (){
+              if(vali_name=="" || vali_email=="" || vali_mobile=="" || save_radio.length==0 || save_checkbox.length==0 || address=="" || st_desi
+              .length==0 || selected.length==0){
+                alert("complete All Fields First");
+              }
+              else{
+                  alert("Validation-Success");
+              }
+            }
+        </script>
+    </body>
+</html>
